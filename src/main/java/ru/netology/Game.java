@@ -2,8 +2,14 @@ package ru.netology;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Game {
+  /*  public HashMap<String, Player> playerHashMap() {
+
+        return new HashMap<>();
+    }*/
 
     private Collection<Player> players;
 
@@ -24,8 +30,8 @@ public class Game {
     }*/
 
     public int round(String playerName1, String playerName2) {
-        var player1 = findByName1(playerName1);
-        var player2 = findByName2(playerName2);
+        var player1 = findByName(playerName1);
+        var player2 = findByName(playerName2);
         if (player1 == null || player2 == null) {
             throw new NotFoundException("Один из игроков с именами " + playerName1 + ", " + playerName2 + " не зарегистрирован!!!");
         } else {
@@ -40,18 +46,9 @@ public class Game {
         }
     }
 
-    public Player findByName1(String playerName1) {
+    public Player findByName(String player1) {
         for (Player player : players) {
-            if (player.getName() == playerName1) {
-                return player;
-            }
-        }
-        return null;
-    }
-
-    public Player findByName2(String playerName2) {
-        for (Player player : players) {
-            if (player.getName() == playerName2) {
+            if (player.getName().equals(player1)) {
                 return player;
             }
         }
